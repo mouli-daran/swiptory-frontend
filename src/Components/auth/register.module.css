@@ -1,0 +1,108 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 4;
+}
+
+.registerContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 250px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  z-index: 3;
+}
+
+.regiSwip {
+  position: absolute;
+  left: 77px;
+  top: 15px;
+  font-family: DM Sans;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+}
+
+.crossBtn {
+  position: absolute;
+  left: 300px;
+  top: 20px;
+  width: 15px;
+  height: 15px;
+  padding: initial;
+  cursor: pointer;
+  border-radius: 2px;
+  border: none;
+}
+
+.regiform1 {
+  position: absolute;
+  box-sizing: border-box;
+  border: 0;
+  top: 85px;
+  left: 140px;
+  width: 137px;
+  border-radius: 2px;
+  height: 20px;
+  outline: none;
+}
+
+.rlab1 {
+  position: absolute;
+  top: 87px;
+  left: 40px;
+  color: #000000;
+}
+
+.regiform2 {
+  position: absolute;
+  top: 130px;
+  left: 3px;
+  width: 141px;
+  height: 20px;
+  border: none;
+  outline: none;
+}
+
+.rlab2 {
+  position: absolute;
+  top: 130px;
+  left: 40px;
+  color: #000000;
+}
+
+.regiBtn {
+  position: absolute;
+  width: 90px;
+  height: 25px;
+  top: 200px;
+  left: 112px;
+  border-radius: 20px;
+  background-color: #73abff;
+  border: none;
+  font-family: DM Sans;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+}
+
+.googleLoginBtn {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  border: 1px solid red;
+}

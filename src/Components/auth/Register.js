@@ -100,7 +100,7 @@ const Register = ({ onClose, setIsLoggedIn, setUserDetails, setUserId }) => {
                 <IconButton
                   onClick={handleTogglePasswordVisibility}
                   edge="end"
-                  style={{ height: "5px", width: "5px" }}
+                  style={{ height: "5px", width: "5px", right: "10px" }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
