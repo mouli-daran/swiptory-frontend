@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.bookmarkHeader {
+  position: absolute;
+  top: -0;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  box-shadow: 0px 4px 15px 0px #00000026;
+  border: 1px solid red;
+}
+
+.bookmarkSwip {
+  position: absolute;
+  top: -15px;
+  left: 2%;
+  font-family: DM Sans;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+.bookmarkBtn {
+  position: absolute;
+  width: 10%;
+  height: 35px;
+  top: 5px;
+  left: 70%;
+  border-radius: 20px;
+  background-color: #ff7373;
+  border: none;
+  font-family: DM Sans;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.bookmarkBtn:hover {
+  scale: 1.1;
+  border: 1px solid #ff7373;
+  background-color: #ffffff;
+  color: #ff7373;
+}
+.addStoryBtn {
+  position: absolute;
+  width: 10%;
+  height: 35px;
+  top: 5px;
+  left: 81%;
+  border-radius: 20px;
+  background-color: #ff7373;
+  border: none;
+  font-family: DM Sans;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.addStoryBtn :hover {
+  scale: 1.1;
+  border: 1px solid #ff7373;
+  background-color: #ffffff;
+  color: #ff7373;
+}
+
+.bookLittleIcon {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.bookmarkProfilePic {
+  position: absolute;
+  left: 93%;
+  top: 10px;
+}
+
+.hamBtn {
+  position: absolute;
+  background-color: #ffffff;
+  width: 27px;
+  height: 20px;
+  left: 96%;
+  top: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.yrBookmark {
+  position: relative;
+  font-family: DM Sans;
+  top: 150px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.yourStoryHeading {
+  font-size: 1.5rem;
+  color: black;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  margin-top: 5%;
+  font-size: xx-large;
+  font-weight: 600;
+}
+
+.container {
+  display: inline-block;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  min-height: 50vh;
+  max-height: fit-content;
+  position: relative;
+  top: 30px;
+  left: 2%;
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+.storycontainer {
+  width: 20%;
+  height: 300px;
+  z-index: 0;
+  position: relative;
+  top: -10%;
+  border-radius: 12px;
+  margin: 2%;
+}
+
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.noMorestories {
+  position: relative;
+  color: grey;
+  top: 10px;
+  left: 42.5;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .bookmarkHeader {
+    position: absolute;
+    top: -0;
+    width: 100%;
+    height: 120px;
+    background: #ffffff;
+    box-shadow: 0px 4px 15px 0px #00000026;
+    border: 1px solid red;
+  }
+  .bookmarkBtn {
+    position: absolute;
+    width: 40%;
+    height: 40px;
+    top: 50%;
+    left: 10px;
+    border-radius: 20px;
+    background-color: #ff7373;
+    border: none;
+    font-family: DM Sans;
+    font-size: 1rem;
+    text-align: right;
+    margin-top: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .addStoryBtn {
+    position: absolute;
+    width: 30%;
+    height: 40px;
+    top: 50%;
+    left: 45%;
+    border-radius: 20px;
+    background-color: #ff7373;
+    border: none;
+    font-family: DM Sans;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-top: 5px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .hamBtn {
+    position: absolute;
+    background-color: #ffffff;
+    width: 10%;
+    height: 10%;
+    left: 80%;
+    top: 61%;
+    font-size: large;
+    cursor: pointer;
+    border: none;
+  }
+
+  .bookmarkProfilePic {
+    position: absolute;
+    left: 60%;
+    top: 10px;
+  }
+
+  .yourStoryHeading {
+    font-size: 1.5rem;
+    color: black;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    margin-top: 40%;
+    font-weight: 800;
+  }
+
+  .container {
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    min-height: 50vh;
+    max-height: fit-content;
+    position: relative;
+    top: 30px;
+    left: 7%;
+    margin: 0 auto;
+    margin-bottom: 10%;
+  }
+
+  .storycontainer {
+    width: 80%;
+    height: 300px;
+    z-index: 0;
+    position: relative;
+    border-radius: 12px;
+    margin: 2%;
+  }
+
+  .background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+  }
+}
