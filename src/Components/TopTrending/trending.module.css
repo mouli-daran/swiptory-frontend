@@ -1,0 +1,217 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 60vh;
+  max-height: fit-content;
+  position: relative;
+  top: 30px;
+  /* left: 1%; */
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+.storycontainer {
+  width: 20%;
+  height: 300px;
+  z-index: 0;
+  position: relative;
+  top: -10%;
+  border-radius: 12px;
+  margin: 2%;
+  transition: all 1s ease-in-out;
+}
+
+.storycontainer:hover {
+  scale: 0.9;
+}
+
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.NoMoreStories {
+  position: relative;
+  top: 70%;
+  text-align: center;
+  margin: 0 auto;
+  color: grey;
+}
+
+.wrappered {
+  display: block;
+  position: relative;
+  top: 70%;
+  width: 100%;
+  height: 17vh;
+  /* background: linear-gradient(grey, black); */
+  background: rgba(0, 0, 0, 1);
+  color: whitesmoke;
+  z-index: 3;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.heading {
+  width: 80%;
+  position: relative;
+  left: 10px;
+  font-size: large;
+  z-index: 1;
+  font-size: medium;
+  top: -10px;
+}
+
+.decsription {
+  width: 95%;
+  position: relative;
+  top: -30px;
+  left: 10px;
+  z-index: 1;
+  word-wrap: break-word;
+  font-size: small;
+}
+
+.seeMoreBtn {
+  position: relative;
+  margin: 0 auto;
+  top: 5px;
+  width: 10%;
+  top: 2px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #ff7373;
+  color: #ffffff;
+  border: none;
+  font-family: DM Sans;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.yourStoryHeading {
+  font-size: 1.5rem;
+  color: black;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  margin-top: 7%;
+  font-weight: 800;
+}
+
+/* Semore button in your story */
+
+.editBtn {
+  display: block;
+  width: 30%;
+  height: 25px;
+  position: relative;
+  top: 67%;
+  margin: 0 auto;
+  z-index: 4;
+  border-radius: 10px;
+  border: none;
+  border: 1px solid red;
+}
+
+.NoMoreStories {
+  position: relative;
+  font-size: 1rem;
+  top: 70%;
+  text-align: center;
+  margin: 0 auto;
+  color: grey;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    width: 90%;
+    min-height: 60vh;
+    max-height: fit-content;
+    position: relative;
+    margin-bottom: 10%;
+  }
+
+  .heading {
+    width: 80%;
+    position: relative;
+    top: -10px;
+    font-size: x-large;
+    z-index: 1;
+  }
+
+  .decsription {
+    width: 80%;
+    position: relative;
+    top: -30px;
+    font-size: 1rem;
+    left: 10px;
+    z-index: 1;
+    word-wrap: break-word;
+    text-overflow: scroll;
+  }
+
+  .wrappered {
+    display: block;
+    position: relative;
+    position: relative;
+    width: 100%;
+  }
+
+  .editBtn {
+    display: block;
+    width: 30%;
+    height: 25px;
+    position: relative;
+    top: 60%;
+    margin: 0 auto;
+    z-index: 4;
+    border-radius: 10px;
+    border: none;
+    border: 1px solid red;
+  }
+
+  .yourStoryHeading {
+    font-size: 1.5rem;
+    color: black;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    /* top: 30%; */
+    font-weight: 800;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .NoMoreStories {
+    position: relative;
+    top: 0;
+    text-align: center;
+    margin: 0 auto;
+    color: grey;
+    margin-bottom: 10px;
+  }
+
+  .seeMoreBtn {
+    position: relative;
+    top: 330%;
+    width: 20%;
+    height: 50px;
+    z-index: 1;
+    padding: 10px;
+  }
+}
