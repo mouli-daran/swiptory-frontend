@@ -158,7 +158,7 @@ const Home = () => {
   return (
     <div className="header">
       <div>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
       </div>
 
       <div className="filter-container">

@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
-const YourStroy = ({ userId, isLoggedIn }) => {
+const YourStory = ({ userId, isLoggedIn }) => {
   const navigate = useNavigate();
   const initialVisibleIndiaImages = 4;
   const [stories, setStories] = useState();
@@ -148,4 +148,4 @@ const YourStroy = ({ userId, isLoggedIn }) => {
   );
 };
 
-export default YourStroy;
+export default YourStory;

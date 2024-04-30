@@ -6,7 +6,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Logout = ({ parent, userDetails }) => {
+const Logout = ({ parent }) => {
   const navigate = useNavigate();
   const backendurl = `http://localhost:4000/api/v1/logout`;
 
@@ -36,6 +36,7 @@ const Logout = ({ parent, userDetails }) => {
       Cookies.remove("token");
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
+      window.location.reload();
     }
   };
 

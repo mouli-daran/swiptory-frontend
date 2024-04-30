@@ -102,7 +102,9 @@ const Bookmarkpage = () => {
       )} */}
       {/* <h3 className={styles.bookmarkSwip}>SwipTory</h3>
       {/* <Navbar /> */}
-      <Navbar />
+      <div className={styles.navbar}>
+        <Navbar />
+      </div>
       <>
         {openLogoutModal ? <Logout parent={"bookmark"} /> : null}
         {openAddStoriesModal && (
