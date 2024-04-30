@@ -13,13 +13,13 @@ import travel from "../Image/fillimg2.jpg";
 import health from "../Image/medicine.jpg";
 import movies from "../Image/movie.jpg";
 import education from "../Image/fillimg4.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
-import AddStories from "./storiesmodal/AddStoriesModal";
-import Register from "./auth/Register";
-import SignIn from "./auth/Signin";
-import Logout from "./auth/Logout";
+// import AddStories from "./storiesmodal/AddStoriesModal";
+// import Register from "./auth/Register";
+// import SignIn from "./auth/Signin";
+// import Logout from "./auth/Logout";
 import All from "./Filters/All";
 import Travel from "./Filters/Travel";
 import Food from "./Filters/Food";
@@ -28,6 +28,8 @@ import Movies from "./Filters/Movies";
 import Education from "./Filters/Education";
 import TopTrendingStories from "./TopTrending/TopTrendingStories";
 import YourStory from "./YourStory.js/YourStory";
+import Navbar from "./navbar/Navbar";
+import AddStories from "./storiesmodal/AddStoriesModal";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ const Home = () => {
   const [openAddStoriesModal, setOpenAddStoriesModal] = useState(false);
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
   const [showFilter, setShowFilter] = useState({
-    all: false,
+    all: true,
     travel: false,
     food: false,
     health: false,
@@ -49,6 +51,21 @@ const Home = () => {
     education: false,
   });
   const backendUrl = `http://localhost:4000/api/v1/stories/getallstories`;
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 650);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check on mount
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,6 +111,8 @@ const Home = () => {
     fetch();
   }, [userId]);
 
+  console.log("userdetails is---", userDetails);
+
   const handleFoodButtonClick = () => {
     setShowFilter((prevState) => ({
       ...prevState,
@@ -136,100 +155,10 @@ const Home = () => {
     }));
   };
 
-  const handleRegisterClick = () => {
-    setregisterComponent(true);
-  };
-
-  const handleCloseRegister = () => {
-    setregisterComponent(false);
-  };
-
-  const handleSigninClick = () => {
-    setsigninComponent(true);
-  };
-
-  const handleCloseSignin = () => {
-    setsigninComponent(false);
-  };
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    navigate(`/bookmark/${userId}`);
-  };
-
-  const openModalHandler = () => {
-    setOpenAddStoriesModal(true);
-  };
-
-  const handleHamButtonClick = () => {
-    setOpenLogoutModal((prevState) => !prevState);
-  };
-
   return (
     <div className="header">
-      <div className="navbar">
-        {" "}
-        <h3 className="app-name">SwipTory</h3>
-        {openAddStoriesModal && (
-          <AddStories
-            setOpenAddStoriesModal={setOpenAddStoriesModal}
-            userId={userId}
-            stories={stories}
-          />
-        )}
-        {/* {openIndividualStoryModal && <IndividualStory setOpenIndividualStoryModal={setOpenIndividualStoryModal} setregisterComponent={setregisterComponent}  />} */}
-        {isLoggedIn ? (
-          <div>
-            <button className={styles.bookmarkBtn} onClick={handleChange}>
-              <FontAwesomeIcon icon={faBookmark} />
-            </button>
-            <button onClick={openModalHandler} className={styles.addStoryBtn}>
-              Add story
-            </button>
-            <img
-              className={styles.bookmarkProfilePic}
-              src={Profilepic}
-              alt=""
-              style={{ width: "40px", height: "40px" }}
-            />
-            <button className={styles.hamBtn} onClick={handleHamButtonClick}>
-              <img
-                src={Hamburgericon}
-                alt=""
-                style={{ width: "18px", height: "18px" }}
-              />
-            </button>
-            {openLogoutModal ? (
-              <Logout parent={"home"} userDetails={userDetails} />
-            ) : null}
-          </div>
-        ) : (
-          <div>
-            <button className="register-btn" onClick={handleRegisterClick}>
-              Register Now
-            </button>
-            {registerComponent && (
-              <Register
-                onClose={handleCloseRegister}
-                setIsLoggedIn={setIsLoggedIn}
-                setUserDetails={setUserDetails}
-                setUserId={setUserId}
-              />
-            )}
-            <button className="signin-btn" onClick={handleSigninClick}>
-              Login
-            </button>
-            {signinComponent && (
-              <SignIn
-                onClose={handleCloseSignin}
-                setIsLoggedIn={setIsLoggedIn}
-                setUserDetails={setUserDetails}
-                parent="home"
-                setUserId={setUserId}
-              />
-            )}
-          </div>
-        )}
+      <div>
+        <Navbar />
       </div>
 
       <div className="filter-container">
@@ -318,7 +247,7 @@ const Home = () => {
       )}
       {showFilter.education && <Education />}
 
-      <TopTrendingStories />
+      {/* <TopTrendingStories /> */}
     </div>
   );
 };

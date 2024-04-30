@@ -10,6 +10,9 @@ const Logout = ({ parent, userDetails }) => {
   const navigate = useNavigate();
   const backendurl = `http://localhost:4000/api/v1/logout`;
 
+  const username = localStorage.getItem("username");
+  console.log("username is---", username);
+
   const handleLogout = () => {
     const loggedOut = axios.get(backendurl);
     console.log(loggedOut);
@@ -38,10 +41,11 @@ const Logout = ({ parent, userDetails }) => {
 
   return (
     <div className={styles.logoutContainer}>
-      {/* <p className={styles.logUsername}>{userDetails.user.username}</p> */}
+      <p className={styles.logUsername}>{username}</p>
       <button className={styles.logoutBtn} onClick={handleLogout}>
         Logout
       </button>
+
       <ToastContainer />
     </div>
   );

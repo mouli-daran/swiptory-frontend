@@ -54,6 +54,7 @@ const SignIn = ({
         Cookies.set("token", data.token);
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user._id);
+        localStorage.setItem("username", userName);
         onClose();
         setUserDetails(data.user);
         toast("Enjoy the stories!");

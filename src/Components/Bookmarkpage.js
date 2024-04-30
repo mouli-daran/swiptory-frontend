@@ -11,6 +11,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams, useNavigate } from "react-router-dom";
+import Navbar from "./navbar/Navbar";
 const Bookmarkpage = () => {
   const navigate = useNavigate();
   const initialVisibleIndiaImages = 4;
@@ -70,7 +71,7 @@ const Bookmarkpage = () => {
 
   return (
     <div className={styles.bookmarkHeader}>
-      {isLoggedIn ? (
+      {/* {isLoggedIn ? (
         <>
           <button className={styles.addStoryBtn} onClick={openModalHandler}>
             Add story
@@ -98,9 +99,10 @@ const Bookmarkpage = () => {
             Home page
           </button>
         </>
-      )}
-      <h3 className={styles.bookmarkSwip}>SwipTory</h3>
-
+      )} */}
+      {/* <h3 className={styles.bookmarkSwip}>SwipTory</h3>
+      {/* <Navbar /> */}
+      <Navbar />
       <>
         {openLogoutModal ? <Logout parent={"bookmark"} /> : null}
         {openAddStoriesModal && (
