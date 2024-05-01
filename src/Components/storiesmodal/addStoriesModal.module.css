@@ -448,6 +448,10 @@
   }
 
   .nextBtn {
+    display: none;
+  }
+
+  /* .nextBtn {
     background-color: #73abff;
     color: white;
     border: none;
@@ -458,7 +462,7 @@
     left: 45px;
     font-size: large;
     cursor: pointer;
-  }
+  } */
 
   .postBtn {
     background-color: #ff7373;

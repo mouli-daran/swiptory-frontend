@@ -36,7 +36,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
       newSlides[index][field] = value;
     }
     setSlides(newSlides);
-    console.log(newSlides);
+    // console.log(newSlides);
     setCurrentSlide(index);
   };
 
