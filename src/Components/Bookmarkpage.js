@@ -92,6 +92,7 @@ const Bookmarkpage = () => {
               stories.slice(0, visibleIndiaImages).map((story) => {
                 return (
                   <div
+                    key={story._id}
                     id={story._id}
                     onClick={individualStoryPage}
                     className={`${filters.storycontainer} ${filters.background} ${filters.container}`}

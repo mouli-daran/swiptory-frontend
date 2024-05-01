@@ -40,7 +40,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
     setCurrentSlide(index);
   };
 
-  console.log(currentSlide);
+  // console.log(currentSlide);
 
   const AddSlide = ({ setOpenAddStoriesModal }) => {
     if (slides.length < 6) {
