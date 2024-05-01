@@ -15,8 +15,7 @@ const Filter = ({ category }) => {
   );
   // const [statestories, setStateStories] = useState([]);
 
-  const backendUrl = `http://localhost:4000/api/v1/stories/filteredStories`;
-  // const stateBackendUrl = `https://swip-troy-backend.vercel.app/api/v1/stories/getallstories`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/filteredStories`;
 
   useEffect(() => {
     const fetchData = async () => {

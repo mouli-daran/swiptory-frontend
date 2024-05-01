@@ -28,8 +28,8 @@ const IndividualStory = ({ handleSigninClick }) => {
 
   const navigate = useNavigate();
 
-  const backendUrl = `http://localhost:4000/api/v1/stories/${storyId}`;
-  const backendUrlEdit = `http://localhost:4000/api/v1/stories/editstory/${storyId}`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/${storyId}`;
+  const backendUrlEdit = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/editstory/${storyId}`;
 
   useEffect(() => {
     const fetchData = async () => {

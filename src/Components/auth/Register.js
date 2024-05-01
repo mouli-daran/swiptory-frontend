@@ -15,7 +15,7 @@ import TextField from "@mui/material/TextField";
 const Register = ({ onClose, setIsLoggedIn, setUserDetails, setUserId }) => {
   const navigate = useNavigate();
 
-  const backendUrl = `http://localhost:4000/api/v1/register`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/register`;
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");

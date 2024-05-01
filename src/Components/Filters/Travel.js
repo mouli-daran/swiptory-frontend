@@ -15,7 +15,7 @@ const Travel = () => {
     initialVisibleIndiaImages
   );
 
-  const backendUrl = `http://localhost.4000/api/v1/stories/filteredStories`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/filteredStories`;
 
   useEffect(() => {
     const fetchData = async () => {

@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Logout = ({ parent }) => {
   const navigate = useNavigate();
-  const backendurl = `http://localhost:4000/api/v1/logout`;
+  const backendurl = `https://fine-erin-bee-cape.cyclic.app/api/v1/logout`;
 
   const username = localStorage.getItem("username");
   console.log("username is---", username);

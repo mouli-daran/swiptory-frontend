@@ -15,7 +15,7 @@ const All = ({ setOpenIndividualStoryModal, openIndividualStoryModal }) => {
     initialVisibleIndiaImages
   );
 
-  const backendUrl = `http://localhost:4000/api/v1/stories/getallstories`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/getallstories`;
 
   useEffect(() => {
     const fetchData = async () => {

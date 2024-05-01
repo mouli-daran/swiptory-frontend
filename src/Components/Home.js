@@ -47,7 +47,7 @@ const Home = () => {
     movies: false,
     education: false,
   });
-  const backendUrl = `http://localhost:4000/api/v1/stories/getallstories`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/getallstories`;
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -87,7 +87,7 @@ const Home = () => {
     }
   }, []);
 
-  const userUrl = `https://swip-troy-backend.vercel.app/api/v1/${userId}`;
+  const userUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/${userId}`;
 
   useEffect(() => {
     const fetch = async () => {

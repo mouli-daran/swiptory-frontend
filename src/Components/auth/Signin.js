@@ -24,7 +24,7 @@ const SignIn = ({
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const backendUrl = `http://localhost:4000/api/v1/login`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/login`;
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -57,7 +57,7 @@ const SignIn = ({
         localStorage.setItem("username", userName);
         onClose();
         setUserDetails(data.user);
-        toast("Enjoy the stories!");
+        toast.success("Loggeed In.Enjoy the stories!");
       }
     } catch (error) {
       console.log(error.message);

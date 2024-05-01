@@ -25,7 +25,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
 
   useEffect(() => {}, [stories]);
 
-  const backendUrl = `http://localhost:4000/api/v1/stories/createstories`;
+  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/createstories`;
   // const localHost = `http://localhost:4000/api/v1/stories/createstories`;
 
   const handleSlideChange = (index, field, value) => {
