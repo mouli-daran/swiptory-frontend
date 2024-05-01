@@ -204,6 +204,7 @@
   position: relative;
   left: 20px;
   font-size: large;
+  cursor: pointer;
 }
 
 .nextBtn {
@@ -216,6 +217,7 @@
   position: relative;
   left: 20px;
   font-size: large;
+  cursor: pointer;
 }
 
 .postBtn {
@@ -228,6 +230,7 @@
   position: relative;
   margin-left: 40%;
   font-size: large;
+  cursor: pointer;
 }
 
 /* @media only screen and (max-width: 1250px) {
@@ -287,6 +290,7 @@
     height: 30%;
     width: 50%;
     margin: 0 auto;
+    cursor: pointer;
   }
 
   .closeBtn {
@@ -453,6 +457,7 @@
     position: relative;
     left: 45px;
     font-size: large;
+    cursor: pointer;
   }
 
   .postBtn {
@@ -466,6 +471,7 @@
     margin-left: 45px;
     font-size: large;
     margin-bottom: 10px;
+    cursor: pointer;
   }
 
   .btnContainer {

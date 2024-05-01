@@ -97,6 +97,7 @@ const EditStories = ({
           if (data.success) {
             toast.success("Updated Successfully");
             setTimeout(() => closeModal(), 2000);
+            setTimeout(() => window.location.reload(), 3000);
           }
         })
         .catch((error) => {
@@ -111,7 +112,7 @@ const EditStories = ({
   };
 
   const nextSlide = () => {
-    console.log(numberOfSlides.length);
+    // console.log(numberOfSlides.length);
     if (
       !updateSlide[currentSlide].heading ||
       !updateSlide[currentSlide].description ||
