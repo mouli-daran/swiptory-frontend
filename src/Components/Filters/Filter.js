@@ -43,7 +43,7 @@ const Filter = ({ category }) => {
 
   const individualStoryPage = (e) => {
     const storyId = e.target.getAttribute("id");
-    console.log(e.target.getAttribute("id"));
+    // console.log(e.target.getAttribute("id"));
     navigate(`/individualstory/${storyId}`);
   };
 

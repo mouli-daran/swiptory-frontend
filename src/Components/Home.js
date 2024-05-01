@@ -34,14 +34,11 @@ import AddStories from "./storiesmodal/AddStoriesModal";
 const Home = () => {
   const navigate = useNavigate();
 
-  const [registerComponent, setregisterComponent] = useState(false);
-  const [signinComponent, setsigninComponent] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState();
   const [userId, setUserId] = useState();
   const [stories, setStories] = useState([]);
-  const [openAddStoriesModal, setOpenAddStoriesModal] = useState(false);
-  const [openLogoutModal, setOpenLogoutModal] = useState(false);
+
   const [showFilter, setShowFilter] = useState({
     all: true,
     travel: false,
@@ -90,16 +87,13 @@ const Home = () => {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(userId);
-  }, [userId]);
-
   const userUrl = `https://swip-troy-backend.vercel.app/api/v1/${userId}`;
 
   useEffect(() => {
     const fetch = async () => {
       try {
         const result = await axios.get(userUrl);
+        // console.log("result issss-", result);
         const userDetails = result.data;
         console.log(userDetails);
         setUserDetails(userDetails);
@@ -111,7 +105,7 @@ const Home = () => {
     fetch();
   }, [userId]);
 
-  console.log("userdetails is---", userDetails);
+  // console.log("userdetails is---", userId);
 
   const handleFoodButtonClick = () => {
     setShowFilter((prevState) => ({
@@ -158,7 +152,7 @@ const Home = () => {
   return (
     <div className="header">
       <div>
-        <Navbar isLoggedIn={isLoggedIn} />
+        <Navbar isLoggedIn={isLoggedIn} userId={userId} />
       </div>
 
       <div className="filter-container">

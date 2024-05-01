@@ -32,7 +32,7 @@ const TopTrendingStories = ({ setOpenIndividualStoryModa }) => {
     fetch();
   }, []);
 
-  console.log("top trending stories is----", stories);
+  // console.log("top trending stories is----", stories);
 
   const handleSeeMoreIndiaClick = () => {
     setVisibleIndiaImages(visibleIndiaImages + 4);
@@ -40,7 +40,7 @@ const TopTrendingStories = ({ setOpenIndividualStoryModa }) => {
 
   const individualStoryPage = (e) => {
     const storyId = e.target.getAttribute("id");
-    console.log(e.target.getAttribute("id"));
+    // console.log(e.target.getAttribute("id"));
     navigate(`/individualstory/${storyId}`);
   };
 

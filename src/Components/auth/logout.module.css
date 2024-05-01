@@ -1,20 +1,21 @@
 .logoutContainer {
   position: fixed;
   width: 10%;
-  height: 20%;
-  top: 18%;
+  height: 15%;
+  top: 16%;
   left: 92%;
   transform: translate(-50%, -50%);
   z-index: 2;
   background-color: #ffffff;
-  border: 1px solid red;
+  border: 1px solid rgb(241, 240, 240);
+  border-radius: 10px;
 }
 
 .logoutBtn {
   position: relative;
   width: 50%;
   height: 35px;
-  top: 35px;
+  top: 0px;
   left: 26%;
   border-radius: 20px;
   background-color: #ff7373;
@@ -35,9 +36,10 @@
   position: relative;
   width: 5%;
   height: 12px;
-  top: 15px;
-  left: 37%;
+  top: 5px;
+  left: 28%;
   font-family: DM Sans;
+  font-weight: 600;
   letter-spacing: 0em;
   white-space: nowrap;
   color: black;

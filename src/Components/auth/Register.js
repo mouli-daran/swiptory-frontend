@@ -16,7 +16,6 @@ const Register = ({ onClose, setIsLoggedIn, setUserDetails, setUserId }) => {
   const navigate = useNavigate();
 
   const backendUrl = `http://localhost:4000/api/v1/register`;
-  console.log(backendUrl);
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");

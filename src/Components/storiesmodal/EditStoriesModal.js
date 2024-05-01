@@ -25,10 +25,10 @@ const EditStories = ({
         .get(backendUrlIndividualStory)
         .then((res) => {
           const data = res.data;
-          console.log(data);
+          // console.log(data);
           setUpdateSlides(data.story.slides);
           setNumberOfSlides(data.story.slides);
-          console.log(updateSlide);
+          // console.log(updateSlide);
         })
         .catch((error) => {
           console.log(error);
@@ -45,12 +45,12 @@ const EditStories = ({
       newSlides[index][field] = value;
     }
     setUpdateSlides(newSlides);
-    console.log(newSlides);
+    // console.log(newSlides);
   };
 
   // Add axios post request with bookmark and userDetails._id
   const AddSlide = ({ setOpenAddStoriesModal }) => {
-    console.log(numberOfSlides.length);
+    // console.log(numberOfSlides.length);
     if (numberOfSlides.length < 6) {
       setNumberOfSlides((prevSlides) => [...prevSlides, prevSlides.length + 1]);
       setUpdateSlides((prevSlides) => [
@@ -70,7 +70,7 @@ const EditStories = ({
   };
 
   const deleteSlide = () => {
-    console.log(numberOfSlides.length);
+    // console.log(numberOfSlides.length);
     if (numberOfSlides.length > 3) {
       setNumberOfSlides((prevSlides) => prevSlides.slice(0, -1));
       setUpdateSlides((prevSlides) => prevSlides.slice(0, -1));
@@ -95,8 +95,8 @@ const EditStories = ({
         .then((res) => {
           const data = res.data;
           if (data.success) {
-            toast("Successfully created stories");
-            closeModal();
+            toast.success("Updated Successfully");
+            setTimeout(() => closeModal(), 2000);
           }
         })
         .catch((error) => {
@@ -276,8 +276,8 @@ const EditStories = ({
       </div>
 
       <ToastContainer
-        position="top-right"
-        autoClose={5000}
+        position="top-center"
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -288,7 +288,6 @@ const EditStories = ({
         theme="light"
       />
       {/* Same as */}
-      <ToastContainer />
     </div>
   );
 };

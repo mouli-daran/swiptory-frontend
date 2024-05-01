@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Mobile from "./Mobile";
 import Desktop from "./Desktop";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, userId }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 650);
 
   useEffect(() => {
@@ -17,7 +17,15 @@ const Navbar = () => {
     };
   }, []);
 
-  return <>{isSmallScreen ? <Mobile /> : <Desktop />}</>;
+  return (
+    <>
+      {isSmallScreen ? (
+        <Mobile isLoggedIn={isLoggedIn} userId={userId} />
+      ) : (
+        <Desktop />
+      )}
+    </>
+  );
 };
 
 export default Navbar;

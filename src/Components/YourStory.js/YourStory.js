@@ -20,6 +20,7 @@ const YourStory = ({ userId, isLoggedIn }) => {
   const [statestories, setStateStories] = useState([]);
 
   const backendUrl = `http://localhost:4000/api/v1/stories/userstories/${userId}`;
+  // console.log("backend url story is---", backendUrl);
 
   useEffect(() => {
     const fetch = async () => {
@@ -28,7 +29,7 @@ const YourStory = ({ userId, isLoggedIn }) => {
         const data = result.data;
         if (data.success) {
           setStories(data.userStories);
-          console.log(stories);
+          // console.log(stories);
         } else {
           toast.error("No more stories are avaible");
         }
@@ -52,7 +53,7 @@ const YourStory = ({ userId, isLoggedIn }) => {
 
   const individualStoryPage = (e) => {
     const storyId = e.target.getAttribute("id");
-    console.log(e.target.getAttribute("id"));
+    // console.log(e.target.getAttribute("id"));
     navigate(`/individualstory/${storyId}`);
   };
 

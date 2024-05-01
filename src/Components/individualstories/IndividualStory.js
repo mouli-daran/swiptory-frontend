@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SignIn from "../auth/Signin";
 import styles from "./individualStory.module.css";
 import axios from "axios";
@@ -21,13 +21,12 @@ const IndividualStory = ({ handleSigninClick }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginComponent, setLoginComponent] = useState(false);
   const [userId, setUserId] = useState();
+  const slideContainerRef = useRef(null);
 
   const { id } = useParams();
   const storyId = id;
 
   const navigate = useNavigate();
-
-  const [isLiked, setIsLiked] = useState(false);
 
   const backendUrl = `http://localhost:4000/api/v1/stories/${storyId}`;
   const backendUrlEdit = `http://localhost:4000/api/v1/stories/editstory/${storyId}`;
@@ -62,22 +61,10 @@ const IndividualStory = ({ handleSigninClick }) => {
       if (currentslide > 0) {
         return currentslide - 1;
       }
-      console.log(currentslide);
+      // console.log(currentslide);
       return currentslide;
     });
   };
-
-  // const nextSlide = () => {
-  //   setCurrentSlide((currentslide) => {
-  //     if (story && story.slides && currentslide < story.slides.length - 1) {
-  //       return currentslide + 1;
-  //     } else {
-  //       toast.error("No more slides available");
-  //     }
-  //     console.log(currentslide);
-  //     return currentslide;
-  //   });
-  // };
 
   const nextSlide = () => {
     setCurrentSlide((currentslide) => {
@@ -86,7 +73,7 @@ const IndividualStory = ({ handleSigninClick }) => {
       } else {
         toast.error("No more slides available");
       }
-      console.log(currentslide);
+      // console.log(currentslide);
       return currentslide;
     });
   };
@@ -126,44 +113,6 @@ const IndividualStory = ({ handleSigninClick }) => {
     }
   };
 
-  // const handleBookmark = async () => {
-  //   if (!isLoggedIn) {
-  //     setLoginComponent(true);
-  //     toast.error("Login Plese !!");
-  //   } else {
-  //     const previousStory = story;
-  //     console.log(previousStory);
-  //     let updatedStory;
-  //     if (story.bookmark) {
-  //       updatedStory = {
-  //         ...previousStory,
-  //         bookmark: false,
-  //         userId: previousStory.userId.filter((id) => id !== userId),
-  //       };
-  //     } else {
-  //       updatedStory = {
-  //         ...previousStory,
-  //         bookmark: true,
-  //         userId: previousStory.userId.includes(userId)
-  //           ? previousStory.userId
-  //           : [...previousStory.userId, userId],
-  //       };
-  //     }
-
-  //     console.log(updatedStory);
-
-  //     try {
-  //       const result = await axios.put(backendUrlEdit, updatedStory);
-  //       if (result.data.success) {
-  //         console.log(updatedStory, "updated at api");
-  //         setStory(updatedStory);
-  //       }
-  //     } catch (error) {
-  //       toast.error("error");
-  //     }
-  //   }
-  // };
-
   const closeModal = () => {
     navigate("/");
   };
@@ -200,7 +149,7 @@ const IndividualStory = ({ handleSigninClick }) => {
         try {
           const result = axios.put(backendUrlEdit, updatedStory);
           if (result.data.success) {
-            console.log(updatedStory);
+            // console.log(updatedStory);
             setStory(updatedStory);
           } else {
             toast.error("error");
@@ -214,6 +163,14 @@ const IndividualStory = ({ handleSigninClick }) => {
     }
   };
 
+  const handleTapLeft = () => {
+    previousSlide();
+  };
+
+  const handleTapRight = () => {
+    nextSlide();
+  };
+
   return (
     <div className={styles.background}>
       {story && story.slides && story.slides[currentslide] && (
@@ -222,20 +179,14 @@ const IndividualStory = ({ handleSigninClick }) => {
           style={{
             backgroundImage: `url(${story.slides[currentslide].image.url})`,
           }}
+          onTouchStart={(e) => {
+            if (e.touches[0].clientX < window.innerWidth / 2) {
+              handleTapLeft();
+            } else {
+              handleTapRight();
+            }
+          }}
         >
-          {/* <div className={styles.slideContainer}>
-            {story.slides.map((slide, index) =>
-              index < currentslide ? (
-                <span
-                  key={index}
-                  className={`${styles.slide} ${styles.dark}`}
-                ></span>
-              ) : (
-                <span key={index} className={styles.slide}></span>
-              )
-            )}
-          </div> */}
-
           <div className={styles.slideContainer}>
             {story.slides.map((slide, index) =>
               index < currentslide ? (

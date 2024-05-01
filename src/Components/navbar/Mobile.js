@@ -12,8 +12,9 @@ import AddStories from "../storiesmodal/AddStoriesModal";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import YourStory from "../YourStory.js/YourStory";
 
-const Mobile = ({ parent }) => {
+const Mobile = ({ isLoggedIn, userid }) => {
   const [isAuthenticated, SetIsAuthenticated] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
   const [registerComponent, setregisterComponent] = useState(false);
@@ -22,30 +23,35 @@ const Mobile = ({ parent }) => {
   const [userId, setUserId] = useState();
   const [openAddStoriesModal, setOpenAddStoriesModal] = useState(false);
   const [stories, setStories] = useState([]);
+  const [showStory, setShowStory] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if token exists in localStorage
-    const token = localStorage.getItem("token");
-    if (token) {
+    const tokenInLocalStorage = localStorage.getItem("token");
+    const userIdInLocalStorage = localStorage.getItem("userId");
+    if (tokenInLocalStorage) {
       SetIsAuthenticated(true);
-    } else {
-      SetIsAuthenticated(false);
+    }
+    if (userIdInLocalStorage) {
+      setUserId(userIdInLocalStorage);
     }
   }, []);
+  const username = localStorage.getItem("username");
+
+  // console.log("userid from navbar recieved", userId);
 
   const backendurl = `http://localhost:4000/api/v1/logout`;
 
   const userUrl = `https://localhost:4000/api/v1/${userId}`;
-  console.log("userid iss----", userUrl);
+  // console.log("user url is: " + userUrl);
 
   useEffect(() => {
     const fetch = async () => {
       try {
         const result = await axios.get(userUrl);
         const userDetails = result.data;
-        console.log(userDetails);
+        // console.log(userDetails);
         setUserDetails(userDetails);
       } catch (error) {
         console.log(error);
@@ -55,7 +61,7 @@ const Mobile = ({ parent }) => {
   }, [userId]);
 
   const name = localStorage.getItem("username");
-  console.log("name is---", name);
+  // console.log("name is---", name);
 
   const handleHamButtonClick = () => {
     setMenuClick(!menuClick);
@@ -77,7 +83,10 @@ const Mobile = ({ parent }) => {
     navigate(`/bookmark/${userId}`);
   };
   const openModalHandler = () => {
-    setOpenAddStoriesModal(true);
+    setOpenAddStoriesModal(!openAddStoriesModal);
+    setTimeout(() => {
+      setMenuClick(!menuClick);
+    }, 500);
   };
   const handleMenuClick = () => {
     setMenuClick(!menuClick);
@@ -100,6 +109,10 @@ const Mobile = ({ parent }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     window.location.reload();
+    navigate("/");
+  };
+
+  const handleStoryClick = () => {
     navigate("/");
   };
 
@@ -142,7 +155,7 @@ const Mobile = ({ parent }) => {
                     {registerComponent && (
                       <Register
                         onClose={handleCloseRegister}
-                        setIsAuthenticated={SetIsAuthenticated}
+                        setIsLoggedIn={SetIsAuthenticated}
                         setUserDetails={setUserDetails}
                         setUserId={setUserId}
                       />
@@ -189,21 +202,22 @@ const Mobile = ({ parent }) => {
                         alt=""
                         style={{ width: "40px", height: "40px" }}
                       />
-                      <h4 style={{ marginBottom: "2rem" }}>Username</h4>
+                      <h4 style={{ marginBottom: "2rem" }}>{username}</h4>
                     </div>
 
                     <button
-                      onClick={() => navigate("/stories")}
+                      onClick={handleStoryClick}
                       className={styles.storyBtn}
                     >
                       Your story
                     </button>
+
                     <button
                       className={styles.bookmarkBtn}
                       onClick={handleChange}
                     >
                       <FontAwesomeIcon icon={faBookmark} />
-                      Bookmark
+                      Bookmarks
                     </button>
 
                     <button

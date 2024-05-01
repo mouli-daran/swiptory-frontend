@@ -21,6 +21,8 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
     },
   ]);
 
+  // console.log("user id for creating new stories is----", userId);
+
   useEffect(() => {}, [stories]);
 
   const backendUrl = `http://localhost:4000/api/v1/stories/createstories`;
@@ -35,42 +37,10 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
     }
     setSlides(newSlides);
     console.log(newSlides);
+    setCurrentSlide(index);
   };
 
   console.log(currentSlide);
-
-  // const AddSlide = ({ setOpenAddStoriesModal }) => {
-  //   console.log(numberOfSlides.length);
-  //   if (numberOfSlides.length < 6) {
-  //     setNumberOfSlides((prevSlides) => [...prevSlides, prevSlides.length + 1]);
-  //     setSlides((prevSlides) => [
-  //       ...prevSlides,
-  //       {
-  //         heading: "",
-  //         description: "",
-  //         image: {
-  //           url: "",
-  //         },
-  //         like: 0,
-  //       },
-  //     ]);
-  //   } else {
-  //     toast.error("Maximium six slides are allowed");
-  //   }
-  // };
-
-  // const deleteSlide = () => {
-  //   console.log(numberOfSlides.length);
-  //   if (numberOfSlides.length > 3) {
-  //     setNumberOfSlides((prevSlides) => prevSlides.slice(0, -1));
-  //     setSlides((prevSlides) => prevSlides.slice(0, -1));
-  //     if (currentSlide === numberOfSlides.length - 1) {
-  //       setCurrentSlide(currentSlide - 1);
-  //     }
-  //   } else {
-  //     toast.error("Minimum three slides are required");
-  //   }
-  // };
 
   const AddSlide = ({ setOpenAddStoriesModal }) => {
     if (slides.length < 6) {
@@ -91,7 +61,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
   };
 
   const deleteSlide = () => {
-    if (slides.length > 3) {
+    if (slides.length > 1) {
       setSlides((prevSlides) => prevSlides.slice(0, -1));
       if (currentSlide === slides.length - 1) {
         setCurrentSlide(currentSlide - 1);
@@ -102,35 +72,41 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
   };
 
   const closeModal = () => {
-    console.log("i am being clicked");
     setOpenAddStoriesModal(false);
   };
 
   const handleCreateStories = async () => {
-    console.log(slides);
-    if (slides.length < 3) {
-      toast.error("Minimum three slides are required");
-    } else {
-      try {
-        const result = await axios.post(backendUrl, {
-          bookmark: false,
-          userId: userId,
-          slides: slides,
-        });
+    try {
+      // Check if there are at least three slides
+      if (slides.length < 3) {
+        throw new Error("Minimum three slides are required");
+      }
 
-        const data = result.data;
+      // Send request to create stories
+      const result = await axios.post(backendUrl, {
+        bookmark: false,
+        userId: userId,
+        slides: slides,
+      });
 
-        if (data.success) {
-          toast("Successfully created stories");
-          toast.info("Please reload page to see lastest changes");
-          closeModal();
-        } else {
-          console.log(data.message);
-          toast.error("Error in creating stories");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.info("Heading should not exceed 20 character length ");
+      const data = result.data;
+
+      // Check the success status of the response
+      if (data.success) {
+        toast.success("Successfully created stories");
+        // toast.info("Please reload the page to see the latest changes");
+        setTimeout(() => closeModal(), 2000);
+        setTimeout(() => window.location.reload(), 3000);
+      } else {
+        throw new Error(data.message || "Error in creating stories");
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("Error creating stories:", error.message);
+      if (error.response && error.response.data) {
+        toast.error(error.response.data.message || "An error occurred");
+      } else {
+        toast.error(error.message || "An error occurred");
       }
     }
   };
@@ -157,9 +133,11 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
   return (
     <div className={addStoriesStyle.background}>
       <div className={addStoriesStyle.addStoriesContainer}>
-        <button className={addStoriesStyle.closeBtn} onClick={closeModal}>
-          <FontAwesomeIcon icon={faX} />
-        </button>
+        <div style={{ padding: "5px" }}>
+          <button className={addStoriesStyle.closeBtn} onClick={closeModal}>
+            <FontAwesomeIcon icon={faX} />
+          </button>
+        </div>
         <span className={addStoriesStyle.info}>Add upto 6 slides</span>
         <div className={addStoriesStyle.slideContainer}>
           {slides.map((slide, index) => {
@@ -170,6 +148,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
                   className={`${addStoriesStyle.slideBtn} ${
                     index === currentSlide ? addStoriesStyle.btnBorder : ""
                   }`}
+                  onClick={() => handleSlideChange(index)}
                 >
                   Slide{index + 1}
                   <button
@@ -301,7 +280,6 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
         theme="light"
       />
       {/* Same as */}
-      <ToastContainer />
     </div>
   );
 };

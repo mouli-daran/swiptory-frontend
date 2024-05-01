@@ -33,7 +33,7 @@ const Bookmarkpage = () => {
       try {
         const result = await axios.get(backendUrl);
         const data = result.data;
-        console.log(data);
+        // console.log(data);
         if (data.success) {
           setStories(data.bookmarkedStories);
         }
@@ -65,43 +65,12 @@ const Bookmarkpage = () => {
 
   const individualStoryPage = (e) => {
     const storyId = e.target.getAttribute("id");
-    console.log(e.target.getAttribute("id"));
+    // console.log(e.target.getAttribute("id"));
     navigate(`/individualstory/${storyId}`);
   };
 
   return (
     <div className={styles.bookmarkHeader}>
-      {/* {isLoggedIn ? (
-        <>
-          <button className={styles.addStoryBtn} onClick={openModalHandler}>
-            Add story
-          </button>
-          <img
-            className={styles.bookmarkProfilePic}
-            src={Profilepic}
-            alt=""
-            style={{ width: "40px", height: "40px" }}
-          />
-          <button className={styles.hamBtn} onClick={handleHamButtonClick}>
-            <img
-              src={Hamburgericon}
-              alt=""
-              style={{ width: "18px", height: "18px" }}
-            />
-          </button>
-        </>
-      ) : (
-        <>
-          <button
-            className={styles.addStoryBtn}
-            onClick={handleHomePageNavigate}
-          >
-            Home page
-          </button>
-        </>
-      )} */}
-      {/* <h3 className={styles.bookmarkSwip}>SwipTory</h3>
-      {/* <Navbar /> */}
       <div className={styles.navbar}>
         <Navbar />
       </div>

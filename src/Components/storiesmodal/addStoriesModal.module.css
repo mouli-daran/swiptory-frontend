@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 3;
+  z-index: 9;
 }
 
 .addStoriesContainer {
@@ -25,7 +25,7 @@
   color: grey;
   position: relative;
   left: 70%;
-  top: 20px;
+  top: 2px;
 }
 .closeBtn {
   position: relative;
@@ -50,10 +50,10 @@
 
 .slideContainer {
   width: 90%;
-  height: 7vh;
+  height: 6vh;
   position: relative;
   left: 5%;
-  top: 25px;
+  top: 20px;
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -112,7 +112,7 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 60%;
+  height: 55%;
   position: relative;
   top: 35px;
   /* left: -10px; */
@@ -277,7 +277,7 @@
 @media only screen and (max-width: 650px) {
   .addStoriesContainer {
     width: 80%;
-    height: 70%;
+    height: 80%;
     border-radius: 12px;
     background-color: #ffffff;
     z-index: 3;
@@ -444,19 +444,28 @@
   }
 
   .nextBtn {
-    display: none;
-  }
-
-  .postBtn {
-    /* background-color: #ff7373;
+    background-color: #73abff;
     color: white;
     border: none;
-    width: 80%;
+    width: 60%;
     height: 40px;
     border-radius: 25px;
     position: relative;
-    margin-left: 20px;
-    font-size: large; */
+    left: 45px;
+    font-size: large;
+  }
+
+  .postBtn {
+    background-color: #ff7373;
+    color: white;
+    border: none;
+    width: 60%;
+    height: 40px;
+    border-radius: 25px;
+    position: relative;
+    margin-left: 45px;
+    font-size: large;
+    margin-bottom: 10px;
   }
 
   .btnContainer {
