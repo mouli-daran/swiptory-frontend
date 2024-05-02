@@ -46,23 +46,14 @@ const SignIn = ({
       });
 
       const data = res.data;
-      if (data) {
+      if (data.success) {
         setIsLoggedIn(true);
         setUserId(data.user._id);
         Cookies.set("token", data.token);
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user._id);
         localStorage.setItem("username", userName);
-        toast.success("Logged In. Enjoy the Stories!", {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.success("Loggeed In.Enjoy the stories!");
         setUserDetails(data.user);
         setTimeout(() => {
           onClose();
@@ -131,7 +122,18 @@ const SignIn = ({
         <p className={styles.signinError}>Please enter valid userName</p>
       </div>
 
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
