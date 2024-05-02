@@ -25,7 +25,7 @@
   color: grey;
   position: relative;
   left: 70%;
-  top: 2px;
+  top: 1px;
 }
 .closeBtn {
   position: relative;
@@ -154,7 +154,7 @@
 
 .alignCategory {
   position: relative;
-  left: 7%;
+  left: 6.5%;
   width: 81%;
   font-weight: 600;
   color: black;
@@ -163,7 +163,7 @@
 
 .alignDescription {
   width: 80%;
-  left: 3.4%;
+  left: 3.9%;
   font-weight: 600;
   color: black;
   font-size: 1rem;
@@ -173,7 +173,7 @@
 
 .alignImage {
   position: relative;
-  left: 11.5%;
+  left: 12%;
   font-weight: 600;
   color: black;
   font-size: 1rem;
