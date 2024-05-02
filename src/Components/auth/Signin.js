@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./signin.module.css";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -126,7 +125,7 @@ const SignIn = ({
 
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -136,8 +135,6 @@ const SignIn = ({
         pauseOnHover
         theme="light"
       />
-      {/* Same as */}
-      <ToastContainer />
     </div>
   );
 };

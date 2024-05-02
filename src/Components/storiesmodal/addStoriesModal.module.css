@@ -97,6 +97,7 @@
   color: red;
   border: 1px solid red;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .addBtn {
@@ -146,7 +147,7 @@
 
 .alignHeading {
   position: relative;
-  left: 8.2%;
+  left: 8.1%;
   width: 80%;
   font-weight: 600;
   color: black;
@@ -155,7 +156,7 @@
 
 .alignCategory {
   position: relative;
-  left: 6.7%;
+  left: 6.6%;
   width: 81%;
   font-weight: 600;
   color: black;
