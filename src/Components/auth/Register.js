@@ -50,9 +50,11 @@ const Register = ({ onClose, setIsLoggedIn, setUserDetails, setUserId }) => {
           Cookies.set("token", data.token);
           localStorage.setItem("token", data.token);
           localStorage.setItem("userId", data.user._id);
-          onClose();
+          toast.success("Successfully registered");
           setUserDetails(data.user);
-          toast("Success registered");
+          setTimeout(() => {
+            onClose();
+          }, 1000);
         }
       })
       .catch((error) => {

@@ -55,9 +55,11 @@ const SignIn = ({
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user._id);
         localStorage.setItem("username", userName);
-        onClose();
-        setUserDetails(data.user);
         toast.success("Loggeed In.Enjoy the stories!");
+        setUserDetails(data.user);
+        setTimeout(() => {
+          onClose();
+        }, 1000);
       }
     } catch (error) {
       console.log(error.message);
