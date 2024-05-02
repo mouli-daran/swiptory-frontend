@@ -173,7 +173,7 @@
 
 .alignImage {
   position: relative;
-  left: 12%;
+  left: 11.2%;
   font-weight: 600;
   color: black;
   font-size: 1rem;
@@ -324,7 +324,7 @@
 
   .slideContainer {
     width: 30%;
-    height: 40%;
+    height: fit-content;
     position: relative;
     left: -25px;
     top: 30px;
