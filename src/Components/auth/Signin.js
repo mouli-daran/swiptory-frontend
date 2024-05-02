@@ -46,7 +46,7 @@ const SignIn = ({
       });
 
       const data = res.data;
-      if (data.success) {
+      if (data) {
         setIsLoggedIn(true);
         setUserId(data.user._id);
         Cookies.set("token", data.token);
