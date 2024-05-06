@@ -23,6 +23,7 @@ const SignIn = ({
   const [showPassword, setShowPassword] = useState(false);
 
   const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/login`;
+  // const backendUrl = `http://localhost:4000/api/v1/login`;
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -40,12 +41,13 @@ const SignIn = ({
     event.preventDefault();
 
     try {
-      const res = await axios.post(backendUrl, {
+      const result = await axios.post(backendUrl, {
         username: userName,
         password: password,
       });
 
-      const data = res.data;
+      const data = result.data;
+      console.log("result is ----", result);
       if (data.success) {
         setIsLoggedIn(true);
         setUserId(data.user._id);
@@ -53,11 +55,11 @@ const SignIn = ({
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user._id);
         localStorage.setItem("username", userName);
-        toast.success("Loggeed In.Enjoy the stories!");
         setUserDetails(data.user);
         setTimeout(() => {
+          toast.success("Logged In. Enjoy Stories", { autoClose: 2000 });
           onClose();
-        }, 1000);
+        }, 3000);
       }
     } catch (error) {
       console.log(error.message);
@@ -122,18 +124,7 @@ const SignIn = ({
         <p className={styles.signinError}>Please enter valid userName</p>
       </div>
 
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <ToastContainer />
     </div>
   );
 };

@@ -42,8 +42,11 @@ const Mobile = ({ isLoggedIn, userid }) => {
   // console.log("userid from navbar recieved", userId);
 
   const backendurl = `https://fine-erin-bee-cape.cyclic.app/api/v1/logout`;
+  //const backendurl = `http://localhost:4000/api/v1/logout`;
 
   const userUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/${userId}`;
+  //const userUrl = `http://localhost:4000/api/v1/${userId}`;
+
   // console.log("user url is: " + userUrl);
 
   useEffect(() => {
@@ -59,9 +62,6 @@ const Mobile = ({ isLoggedIn, userid }) => {
     };
     fetch();
   }, [userId]);
-
-  const name = localStorage.getItem("username");
-  // console.log("name is---", name);
 
   const handleHamButtonClick = () => {
     setMenuClick(!menuClick);

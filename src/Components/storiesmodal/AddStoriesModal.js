@@ -26,7 +26,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
   useEffect(() => {}, [stories]);
 
   const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/createstories`;
-  // const localHost = `http://localhost:4000/api/v1/stories/createstories`;
+  //const backendUrl = `http://localhost:4000/api/v1/stories/createstories`;
 
   const handleSlideChange = (index, field, value) => {
     const newSlides = [...slides];
@@ -60,11 +60,12 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
     }
   };
 
-  const deleteSlide = () => {
-    if (slides.length > 1) {
-      setSlides((prevSlides) => prevSlides.slice(0, -1));
-      if (currentSlide === slides.length - 1) {
-        setCurrentSlide(currentSlide - 1);
+  const deleteSlide = (index) => {
+    const newSlides = slides.filter((_, i) => i !== index);
+    if (newSlides.length >= 1) {
+      setSlides(newSlides);
+      if (currentSlide === index) {
+        setCurrentSlide(currentSlide === 0 ? 0 : currentSlide - 1);
       }
     } else {
       toast.error("Minimum three slides are required");
@@ -142,27 +143,28 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
         <div className={addStoriesStyle.slideContainer}>
           {slides.map((slide, index) => {
             return (
-              <div className={addStoriesStyle.slide}>
+              <div className={addStoriesStyle.slide} key={index}>
+                {/* <div className={addStoriesStyle.slideBtnWrapper}> */}
                 <button
-                  key={index}
                   className={`${addStoriesStyle.slideBtn} ${
                     index === currentSlide ? addStoriesStyle.btnBorder : ""
                   }`}
                   onClick={() => handleSlideChange(index)}
                 >
-                  Slide{index + 1}
-                  <button
-                    className={addStoriesStyle.slideCloseBtn}
-                    onClick={deleteSlide}
-                  >
-                    <FontAwesomeIcon icon={faX} />
-                  </button>
+                  Slide {index + 1}
                 </button>
+                <button
+                  className={addStoriesStyle.slideCloseBtn}
+                  onClick={() => deleteSlide(index)}
+                >
+                  <FontAwesomeIcon icon={faX} />
+                </button>
+                {/* </div> */}
               </div>
             );
           })}
 
-          {slides > 5 ? null : (
+          {slides.length > 5 ? null : (
             <button onClick={AddSlide} className={addStoriesStyle.addBtn}>
               Add +
             </button>
@@ -170,7 +172,6 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
         </div>
 
         <form className={addStoriesStyle.formContainer}>
-          {/* <div className={addStoriesStyle.formInputContainer}> */}
           <div className={addStoriesStyle.filedContainer}>
             <h3>
               <label>Heading: </label>
@@ -245,7 +246,6 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
               <option value="education">education</option>
             </select>
           </div>
-          {/* </div> */}
         </form>
 
         <div className={addStoriesStyle.btnContainer}>

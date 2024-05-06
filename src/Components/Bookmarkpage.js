@@ -27,13 +27,13 @@ const Bookmarkpage = () => {
   const userId = id;
 
   const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/bookmarkedStories/${userId}`;
+  //const backendUrl = `http://localhost:4000/api/v1/stories/bookmarkedStories/${userId}`;
 
   useEffect(() => {
     const fetch = async () => {
       try {
         const result = await axios.get(backendUrl);
         const data = result.data;
-        // console.log(data);
         if (data.success) {
           setStories(data.bookmarkedStories);
         }

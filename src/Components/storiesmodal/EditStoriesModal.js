@@ -16,8 +16,10 @@ const EditStories = ({
   const [updateSlide, setUpdateSlides] = useState();
 
   const backendUrlIndividualStory = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/${storyId}`;
+  //const backendUrlIndividualStory = `http://localhost:4000/api/v1/stories/${storyId}`;
 
   const backendUrlEdit = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/editstory/${storyId}`;
+  //const backendUrlEdit = `http://localhost:4000/api/v1/stories/editstory/${storyId}`;
 
   useEffect(() => {
     const fetch = async () => {

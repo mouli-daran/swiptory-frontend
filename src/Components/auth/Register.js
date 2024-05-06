@@ -1,5 +1,4 @@
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -16,6 +15,7 @@ const Register = ({ onClose, setIsLoggedIn, setUserDetails, setUserId }) => {
   const navigate = useNavigate();
 
   const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/register`;
+  // const backendUrl = `http://localhost:4000/api/v1/register`;
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -36,31 +36,29 @@ const Register = ({ onClose, setIsLoggedIn, setUserDetails, setUserId }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const result = axios.post(backendUrl, {
-      username: userName,
-      password: password,
-    });
-
-    result
-      .then((res) => {
-        const data = res.data;
-        if (data.success) {
-          setIsLoggedIn(true);
-          setUserId(data.user._id);
-          Cookies.set("token", data.token);
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("userId", data.user._id);
-          toast.success("Successfully registered");
-          setUserDetails(data.user);
-          setTimeout(() => {
-            onClose();
-          }, 1000);
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-        toast.error("Not Success registered");
+    try {
+      const result = await axios.post(backendUrl, {
+        username: userName,
+        password: password,
       });
+
+      const data = result.data;
+      if (data.success) {
+        setIsLoggedIn(true);
+        setUserId(data.user._id);
+        Cookies.set("token", data.token);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.user._id);
+        toast.success("Successfully registered");
+        setUserDetails(data.user);
+        setTimeout(() => {
+          onClose();
+        }, 1000);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error("Registration failed , Check your details");
+    }
 
     setUserName("");
     setPassword("");

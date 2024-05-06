@@ -3,33 +3,22 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./home.css";
-import styles from "./bookmarkpage.module.css";
-import Bookmarkicon from "../Image/bookmark-icon.png";
-import Profilepic from "../Image/profilepic.svg";
-import Hamburgericon from "../Image/Ham.svg";
+
 import all from "../Image/image 466.png";
 import food from "../Image/fillimg3.jpg";
 import travel from "../Image/fillimg2.jpg";
 import health from "../Image/medicine.jpg";
 import movies from "../Image/movie.jpg";
 import education from "../Image/fillimg4.png";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
-// import AddStories from "./storiesmodal/AddStoriesModal";
-// import Register from "./auth/Register";
-// import SignIn from "./auth/Signin";
-// import Logout from "./auth/Logout";
 import All from "./Filters/All";
 import Travel from "./Filters/Travel";
 import Food from "./Filters/Food";
 import Health from "./Filters/Health";
 import Movies from "./Filters/Movies";
 import Education from "./Filters/Education";
-import TopTrendingStories from "./TopTrending/TopTrendingStories";
 import YourStory from "./YourStory.js/YourStory";
 import Navbar from "./navbar/Navbar";
-import AddStories from "./storiesmodal/AddStoriesModal";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -48,6 +37,7 @@ const Home = () => {
     education: false,
   });
   const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/getallstories`;
+  //const backendUrl = `http://localhost:4000/api/v1/stories/getallstories`;
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -87,6 +77,7 @@ const Home = () => {
     }
   }, []);
 
+  //const userUrl = `http://localhost:4000/api/v1/${userId}`;
   const userUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/${userId}`;
 
   useEffect(() => {
