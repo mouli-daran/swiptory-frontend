@@ -52,7 +52,9 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
       newSlides[index][field].url = value;
     } else if (field === "category") {
       newSlides.forEach((slide, i) => {
-        newSlides[i][field] = value;
+        if (!newSlides[i][field]) {
+          newSlides[i][field] = value;
+        }
       });
     } else {
       newSlides[index][field] = value;
