@@ -22,7 +22,7 @@ const SignIn = ({
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/login`;
+  const backendUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/login`;
   // const backendUrl = `http://localhost:4000/api/v1/login`;
 
   const handleUsernameChange = (event) => {
@@ -60,6 +60,7 @@ const SignIn = ({
           toast.success("Logged In. Enjoy Stories", { autoClose: 2000 });
           onClose();
         }, 3000);
+        window.location.reload();
       }
     } catch (error) {
       console.log(error.message);

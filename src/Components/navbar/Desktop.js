@@ -34,8 +34,8 @@ const Desktop = () => {
 
   const navigate = useNavigate();
 
-  const userUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/${userId}`;
-  //const userUrl = `http://localhost:4000/api/v1/${userId}`;
+  const userUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/${userId}`;
+  // const userUrl = `http://localhost:4000/api/v1/${userId}`;
 
   // console.log("userUrl from desktop isss: " + userUrl);
 
@@ -78,10 +78,16 @@ const Desktop = () => {
     setOpenLogoutModal((prevState) => !prevState);
   };
 
+  const handleHeadingClick = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <nav className={styles.navbar}>
-        <h2 className={styles.logoText}>SwipTory</h2>
+        <h2 className={styles.logoText} onClick={handleHeadingClick}>
+          SwipTory
+        </h2>
         {openAddStoriesModal && (
           <AddStories
             setOpenAddStoriesModal={setOpenAddStoriesModal}

@@ -27,7 +27,6 @@ const Home = () => {
   const [userDetails, setUserDetails] = useState();
   const [userId, setUserId] = useState();
   const [stories, setStories] = useState([]);
-
   const [showFilter, setShowFilter] = useState({
     all: true,
     travel: false,
@@ -36,7 +35,7 @@ const Home = () => {
     movies: false,
     education: false,
   });
-  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/getallstories`;
+  const backendUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/stories/getallstories`;
   //const backendUrl = `http://localhost:4000/api/v1/stories/getallstories`;
 
   const [isMobile, setIsMobile] = useState(false);
@@ -78,7 +77,7 @@ const Home = () => {
   }, []);
 
   //const userUrl = `http://localhost:4000/api/v1/${userId}`;
-  const userUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/${userId}`;
+  const userUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/${userId}`;
 
   useEffect(() => {
     const fetch = async () => {

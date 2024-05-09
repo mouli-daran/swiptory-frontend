@@ -95,17 +95,21 @@ body {
   height: 25vh;
   border: none;
   cursor: pointer;
-  background-color: none;
   /* transition: scale 1s ease-in-out; */
 }
 
-.fillter-button-container:hover {
+/* .fillter-button-container:hover {
   scale: 1.1;
+} */
+
+/* .fillter-button-container:active {
+  background-color: #ff7373;
+} */
+
+.fillter-button-container:focus {
+  outline: 4px solid #00acd2; /* Change the outline color to blue */
 }
 
-.fillter-button-container:active {
-  background-color: #ff7373;
-}
 .filter-images {
   width: 100%;
   height: 25vh;

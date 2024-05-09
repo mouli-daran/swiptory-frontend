@@ -12,6 +12,7 @@
   margin: 0;
   font-family: "DM Sans";
   font-weight: 700;
+  cursor: pointer;
 }
 .navBtns {
   /* width: 40%; */

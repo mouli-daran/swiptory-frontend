@@ -14,7 +14,7 @@ import TextField from "@mui/material/TextField";
 const Register = ({ onClose, setIsLoggedIn, setUserDetails, setUserId }) => {
   const navigate = useNavigate();
 
-  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/register`;
+  const backendUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/register`;
   // const backendUrl = `http://localhost:4000/api/v1/register`;
 
   const [userName, setUserName] = useState("");

@@ -21,6 +21,7 @@
   border-radius: 12px;
   margin: 1.6%;
   transition: all 1s ease-in-out;
+  cursor: pointer;
 }
 
 .background {

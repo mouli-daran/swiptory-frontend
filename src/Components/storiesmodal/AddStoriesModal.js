@@ -19,24 +19,45 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
       category: "",
       like: 0,
     },
+    {
+      heading: "",
+      description: "",
+      image: {
+        url: "",
+      },
+      category: "",
+      like: 0,
+    },
+    {
+      heading: "",
+      description: "",
+      image: {
+        url: "",
+      },
+      category: "",
+      like: 0,
+    },
   ]);
 
   // console.log("user id for creating new stories is----", userId);
 
   useEffect(() => {}, [stories]);
 
-  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/createstories`;
+  const backendUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/stories/createstories`;
   //const backendUrl = `http://localhost:4000/api/v1/stories/createstories`;
 
   const handleSlideChange = (index, field, value) => {
     const newSlides = [...slides];
     if (field === "image") {
       newSlides[index][field].url = value;
+    } else if (field === "category") {
+      newSlides.forEach((slide, i) => {
+        newSlides[i][field] = value;
+      });
     } else {
       newSlides[index][field] = value;
     }
     setSlides(newSlides);
-    // console.log(newSlides);
     setCurrentSlide(index);
   };
 
@@ -153,12 +174,14 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
                 >
                   Slide {index + 1}
                 </button>
-                <button
-                  className={addStoriesStyle.slideCloseBtn}
-                  onClick={() => deleteSlide(index)}
-                >
-                  <FontAwesomeIcon icon={faX} />
-                </button>
+                {index >= 3 ? (
+                  <button
+                    className={addStoriesStyle.slideCloseBtn}
+                    onClick={() => deleteSlide(index)}
+                  >
+                    <FontAwesomeIcon icon={faX} />
+                  </button>
+                ) : null}
                 {/* </div> */}
               </div>
             );
@@ -192,8 +215,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
             <h3>
               <label>Description: </label>
             </h3>
-            <input
-              type="text"
+            <textarea
               name="description"
               placeholder="Story Description"
               className={`${addStoriesStyle.input} ${addStoriesStyle.alignDescription}`}
@@ -201,7 +223,7 @@ const AddStories = ({ setOpenAddStoriesModal, userId, stories }) => {
               onChange={(e) =>
                 handleSlideChange(currentSlide, "description", e.target.value)
               }
-            />
+            ></textarea>
           </div>
 
           <div className={addStoriesStyle.filedContainer}>

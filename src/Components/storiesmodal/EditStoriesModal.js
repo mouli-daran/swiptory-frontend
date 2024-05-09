@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import addStoriesStyle from "./addStoriesModal.module.css";
+import addStoriesStyle from "./editStoriesModel.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -15,11 +15,11 @@ const EditStories = ({
   const [numberOfSlides, setNumberOfSlides] = useState([]);
   const [updateSlide, setUpdateSlides] = useState();
 
-  const backendUrlIndividualStory = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/${storyId}`;
-  //const backendUrlIndividualStory = `http://localhost:4000/api/v1/stories/${storyId}`;
+  const backendUrlIndividualStory = `https://odd-gold-lizard-sock.cyclic.app/api/v1/stories/${storyId}`;
+  // const backendUrlIndividualStory = `http://localhost:4000/api/v1/stories/${storyId}`;
 
-  const backendUrlEdit = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/editstory/${storyId}`;
-  //const backendUrlEdit = `http://localhost:4000/api/v1/stories/editstory/${storyId}`;
+  const backendUrlEdit = `https://odd-gold-lizard-sock.cyclic.app/api/v1/stories/editstory/${storyId}`;
+  // const backendUrlEdit = `http://localhost:4000/api/v1/stories/editstory/${storyId}`;
 
   useEffect(() => {
     const fetch = async () => {
@@ -145,14 +145,17 @@ const EditStories = ({
                   className={`${addStoriesStyle.slideBtn} ${
                     index === currentSlide ? addStoriesStyle.btnBorder : ""
                   }`}
+                  onClick={() => setCurrentSlide(index)}
                 >
-                  Slide{index + 1}
-                  <button
-                    className={addStoriesStyle.slideCloseBtn}
-                    onClick={deleteSlide}
-                  >
-                    <FontAwesomeIcon icon={faX} />
-                  </button>
+                  Slide {index + 1}
+                  {index >= 3 ? (
+                    <button
+                      className={addStoriesStyle.slideCloseBtn}
+                      onClick={() => deleteSlide(index)}
+                    >
+                      <FontAwesomeIcon icon={faX} />
+                    </button>
+                  ) : null}
                 </button>
               </div>
             );
@@ -191,8 +194,7 @@ const EditStories = ({
             <h3>
               <label>Description: </label>
             </h3>
-            <input
-              type="text"
+            <textarea
               name="description"
               placeholder="Your Description"
               className={`${addStoriesStyle.input} ${addStoriesStyle.alignDescription}`}
@@ -204,7 +206,7 @@ const EditStories = ({
               onChange={(e) =>
                 handleSlideChange(currentSlide, "description", e.target.value)
               }
-            ></input>
+            ></textarea>
           </div>
 
           <div className={addStoriesStyle.filedContainer}>

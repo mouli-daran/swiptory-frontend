@@ -41,11 +41,11 @@ const Mobile = ({ isLoggedIn, userid }) => {
 
   // console.log("userid from navbar recieved", userId);
 
-  const backendurl = `https://fine-erin-bee-cape.cyclic.app/api/v1/logout`;
-  //const backendurl = `http://localhost:4000/api/v1/logout`;
+  const backendurl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/logout`;
+  // const backendurl = `http://localhost:4000/api/v1/logout`;
 
-  const userUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/${userId}`;
-  //const userUrl = `http://localhost:4000/api/v1/${userId}`;
+  const userUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/${userId}`;
+  // const userUrl = `http://localhost:4000/api/v1/${userId}`;
 
   // console.log("user url is: " + userUrl);
 
@@ -116,10 +116,16 @@ const Mobile = ({ isLoggedIn, userid }) => {
     navigate("/");
   };
 
+  const handleHeadingClick = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <nav className={styles.navbar}>
-        <h2 className={styles.logoText}>SwipTory</h2>
+        <h2 className={styles.logoText} onClick={handleHeadingClick}>
+          SwipTory
+        </h2>
         {openAddStoriesModal && (
           <AddStories
             setOpenAddStoriesModal={setOpenAddStoriesModal}

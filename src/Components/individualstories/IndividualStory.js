@@ -28,8 +28,8 @@ const IndividualStory = ({ handleSigninClick }) => {
 
   const navigate = useNavigate();
 
-  const backendUrl = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/${storyId}`;
-  const backendUrlEdit = `https://fine-erin-bee-cape.cyclic.app/api/v1/stories/editstory/${storyId}`;
+  const backendUrl = `https://odd-gold-lizard-sock.cyclic.app/api/v1/stories/${storyId}`;
+  const backendUrlEdit = `https://odd-gold-lizard-sock.cyclic.app/api/v1/stories/editstory/${storyId}`;
 
   // const backendUrl = `http://localhost:4000/api/v1/stories/${storyId}`;
   // const backendUrlEdit = `http://localhost:4000/api/v1/stories/editstory/${storyId}`;
@@ -216,16 +216,20 @@ const IndividualStory = ({ handleSigninClick }) => {
             <button
               className={styles.slideCloseBtn}
               onClick={() => {
-                toast.success("🦄 Link Copied !", {
-                  position: "top-center",
-                  autoClose: 5000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "light",
-                });
+                const url = window.location.href;
+                window.navigator.clipboard
+                  .writeText(url)
+                  .then(() => {
+                    toast.success("Copied to clipboard successfully!", {
+                      position: "top-center",
+                    });
+                    // Additional logic can go here if needed
+                  })
+                  .catch((error) => {
+                    toast.error("Failed to copy to clipboard:", {
+                      position: "bottom-right",
+                    });
+                  });
               }}
             >
               <FontAwesomeIcon icon={faPaperPlane} />
